@@ -39,12 +39,39 @@
             margin: 5px;
             padding: 5px;
         }
+        #key {
+            margin: 20px auto;
+            padding: 10px;
+            background-color: #f9f9f9;
+            border: 1px solid #ddd;
+            width: 80%;
+            text-align: left;
+        }
+        #key img {
+            width: 20px;
+            height: 20px;
+            vertical-align: middle;
+            margin-right: 10px;
+        }
+        #key table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+        }
+        #key th, #key td {
+            padding: 8px;
+            border: 1px solid #ddd;
+            text-align: left;
+        }
+        #key th {
+            background-color: #f2f2f2;
+        }
     </style>
     <!-- Google Maps API -->
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD-7kcuQYGdqeFkjWcLwZOiuOfg1TgTX8M&callback=initMap" async defer></script>
 </head>
 <body>
-    <h1>Uganda E-Learning Initiative for Education Institutions - Busitema University- Access Points</h1>
+    <h1>Uganda E-Learning Initiative for Education Institutions - Busitema University - Access Points</h1>
     <p>This interactive map provides a visual representation of key access points for the Uganda E-Learning Initiative in Busitema University. Each icon on the map represents a location where educational infrastructure is being integrated to support digital learning. These locations play a vital role in enhancing access to educational resources and improving learning outcomes for students and staff in Uganda.</p>
 
     <div id="route-panel">
@@ -100,6 +127,121 @@
     </div>
 
     <div id="map"></div>
+
+    <div id="key">
+        <h2>Map Key</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Icon</th>
+                    <th>Location</th>
+                    <th>Type of Access Point</th>
+                    <th>Description</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Mesh Points -->
+                <tr>
+                    <td><img src="https://cdn-icons-png.flaticon.com/512/167/167756.png" alt="Mesh Icon"></td>
+                    <td>Mesh Near the Generator</td>
+                    <td>Mesh Node</td>
+                    <td>Mesh point near the generator.</td>
+                </tr>
+                <tr>
+                    <td><img src="https://cdn-icons-png.flaticon.com/512/167/167756.png" alt="Mesh Icon"></td>
+                    <td>Mesh at the Quadrangle</td>
+                    <td>Mesh Node</td>
+                    <td>Mesh point at the quadrangle.</td>
+                </tr>
+                <tr>
+                    <td><img src="https://cdn-icons-png.flaticon.com/512/167/167756.png" alt="Mesh Icon"></td>
+                    <td>Mesh at the Education Block</td>
+                    <td>Mesh Node</td>
+                    <td>Mesh point at the Education Block.</td>
+                </tr>
+                <tr>
+                    <td><img src="https://cdn-icons-png.flaticon.com/512/167/167756.png" alt="Mesh Icon"></td>
+                    <td>Mesh at the Biology Lab</td>
+                    <td>Mesh Node</td>
+                    <td>Mesh point at the Biology Lab.</td>
+                </tr>
+                <!-- Outdoor Access Points -->
+                <tr>
+                    <td><img src="https://cdn-icons-png.flaticon.com/512/619/619032.png" alt="Outdoor Icon"></td>
+                    <td>Education Block Solar Powered WiFi Router</td>
+                    <td>Outdoor Access Point</td>
+                    <td>Solar powered WiFi router at the Education Block.</td>
+                </tr>
+                <tr>
+                    <td><img src="https://cdn-icons-png.flaticon.com/512/619/619032.png" alt="Outdoor Icon"></td>
+                    <td>Biology Lab Solar Powered WiFi Router</td>
+                    <td>Outdoor Access Point</td>
+                    <td>Solar powered WiFi router at the Biology Lab.</td>
+                </tr>
+                <tr>
+                    <td><img src="https://cdn-icons-png.flaticon.com/512/619/619032.png" alt="Outdoor Icon"></td>
+                    <td>Library Solar Powered WiFi Router</td>
+                    <td>Outdoor Access Point</td>
+                    <td>Solar powered WiFi router at the Library.</td>
+                </tr>
+                <tr>
+                    <td><img src="https://cdn-icons-png.flaticon.com/512/619/619032.png" alt="Outdoor Icon"></td>
+                    <td>Multipurpose Block Solar Powered WiFi Router</td>
+                    <td>Outdoor Access Point</td>
+                    <td>Solar powered WiFi router at the Multipurpose Block.</td>
+                </tr>
+                <tr>
+                    <td><img src="https://cdn-icons-png.flaticon.com/512/619/619032.png" alt="Outdoor Icon"></td>
+                    <td>Multipurpose Block Unifi AC Mesh Pro</td>
+                    <td>Outdoor Access Point</td>
+                    <td>Unifi AC Mesh Pro at the Multipurpose Block.</td>
+                </tr>
+                <!-- Indoor Access Points -->
+                <tr>
+                    <td><img src="https://cdn-icons-png.flaticon.com/512/3036/3036570.png" alt="Indoor Icon"></td>
+                    <td>Biology Lab Office Indoor AP</td>
+                    <td>Indoor Access Point</td>
+                    <td>Indoor access point at the Biology Lab office.</td>
+                </tr>
+                <tr>
+                    <td><img src="https://cdn-icons-png.flaticon.com/512/3036/3036570.png" alt="Indoor Icon"></td>
+                    <td>Library Indoor AP</td>
+                    <td>Indoor Access Point</td>
+                    <td>Indoor access point at the Library.</td>
+                </tr>
+                <tr>
+                    <td><img src="https://cdn-icons-png.flaticon.com/512/3036/3036570.png" alt="Indoor Icon"></td>
+                    <td>Main Hall Indoor AP</td>
+                    <td>Indoor Access Point</td>
+                    <td>Indoor access point at the Main Hall.</td>
+                </tr>
+                <tr>
+                    <td><img src="https://cdn-icons-png.flaticon.com/512/3036/3036570.png" alt="Indoor Icon"></td>
+                    <td>Conference Hall Indoor AP</td>
+                    <td>Indoor Access Point</td>
+                    <td>Indoor access point at the Conference Hall.</td>
+                </tr>
+                <tr>
+                    <td><img src="https://cdn-icons-png.flaticon.com/512/3036/3036570.png" alt="Indoor Icon"></td>
+                    <td>Renovated Block Indoor AP</td>
+                    <td>Indoor Access Point</td>
+                    <td>Indoor access point at the Renovated Block.</td>
+                </tr>
+                <tr>
+                    <td><img src="https://cdn-icons-png.flaticon.com/512/3036/3036570.png" alt="Indoor Icon"></td>
+                    <td>New Lecture Block 1 Indoor AP</td>
+                    <td>Indoor Access Point</td>
+                    <td>Indoor access point at the New Lecture Block 1.</td>
+                </tr>
+                <tr>
+                    <td><img src="https://cdn-icons-png.flaticon.com/512/3036/3036570.png" alt="Indoor Icon"></td>
+                    <td>New Lecture Block 2 Indoor AP</td>
+                    <td>Indoor Access Point</td>
+                    <td>Indoor access point at the New Lecture Block 2.</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
 
     <script>
         let map;
