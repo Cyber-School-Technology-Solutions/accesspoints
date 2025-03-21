@@ -241,13 +241,19 @@
                 { lat: 0.35412, lng: 32.6254, title: 'Room 8', description: 'Room 8.', icon: icons.room }
             ];
 
-            // Add markers with custom icons and info windows
+            // Add markers with custom icons, labels, and info windows
             locations.forEach(location => {
                 const marker = new google.maps.Marker({
                     position: { lat: location.lat, lng: location.lng },
                     map: map,
                     title: location.title,
-                    icon: location.icon
+                    icon: location.icon,
+                    label: {
+                        text: location.title, // Display the location name as a label
+                        color: "#000000", // Black text color
+                        fontSize: "12px", // Font size
+                        fontWeight: "bold" // Bold text
+                    }
                 });
 
                 const infoWindow = new google.maps.InfoWindow({
