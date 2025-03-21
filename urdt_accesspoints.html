@@ -39,11 +39,38 @@
             margin: 5px;
             padding: 5px;
         }
+        #key {
+            margin: 20px auto;
+            padding: 10px;
+            background-color: #f9f9f9;
+            border: 1px solid #ddd;
+            width: 80%;
+            text-align: left;
+        }
+        #key img {
+            width: 20px;
+            height: 20px;
+            vertical-align: middle;
+            margin-right: 10px;
+        }
+        #key table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+        }
+        #key th, #key td {
+            padding: 8px;
+            border: 1px solid #ddd;
+            text-align: left;
+        }
+        #key th {
+            background-color: #f2f2f2;
+        }
         marquee {
             background-color: #007BFF;
             color: white;
-            padding: 10px;
-            font-size: 16px;
+            padding: 5px;
+            font-size: 14px;
             position: fixed;
             bottom: 0;
             width: 100%;
@@ -83,6 +110,44 @@
     </div>
 
     <div id="map"></div>
+
+    <!-- Map Key -->
+    <div id="key">
+        <h2>Map Key</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Icon</th>
+                    <th>Location</th>
+                    <th>Type of Access Point</th>
+                    <th>Description</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- ARU URDT -->
+                <tr>
+                    <td><img src="https://cdn-icons-png.flaticon.com/512/167/167756.png" alt="ARU URDT Icon"></td>
+                    <td>ARU URDT</td>
+                    <td>Main Campus</td>
+                    <td>Primary location for URDT activities.</td>
+                </tr>
+                <!-- Computer Labs -->
+                <tr>
+                    <td><img src="https://cdn-icons-png.flaticon.com/512/619/619032.png" alt="Computer Lab Icon"></td>
+                    <td>CompLab1-1, CompLab1-2, CompLab2-1, CompLab2-2</td>
+                    <td>Computer Labs</td>
+                    <td>Access points for digital learning in computer labs.</td>
+                </tr>
+                <!-- Admin Block -->
+                <tr>
+                    <td><img src="https://cdn-icons-png.flaticon.com/512/3036/3036570.png" alt="Admin Block Icon"></td>
+                    <td>Admin Block</td>
+                    <td>Administrative Office</td>
+                    <td>Administrative block for URDT operations.</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
 
     <!-- Marquee at the bottom -->
     <marquee>
