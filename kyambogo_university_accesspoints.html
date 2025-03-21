@@ -228,31 +228,33 @@
 
             // Define the locations
             const locations = [
-                { lat: 0.35428, lng: 32.62534, title: 'Mesh Near Boardroom', icon: icons.mesh },
-                { lat: 0.35392, lng: 32.62565, title: 'Dining', icon: icons.dining },
-                { lat: 0.35365, lng: 32.62551, title: 'Parking', icon: icons.parking },
-                { lat: 0.35349, lng: 32.62565, title: 'KYU-Visual Hi-Tech Resource Room', icon: icons.room },
-                { lat: 0.35414, lng: 32.6255, title: 'Board Room', icon: icons.room },
-                { lat: 0.35401, lng: 32.62533, title: 'Room 11', icon: icons.room },
-                { lat: 0.35429, lng: 32.62529, title: 'Room 15', icon: icons.room },
-                { lat: 0.355, lng: 32.62502, title: 'Near Room F (Mesh)', icon: icons.mesh },
-                { lat: 0.35476, lng: 32.6254, title: 'Behind Room 28', icon: icons.room },
-                { lat: 0.35412, lng: 32.6254, title: 'Room 8', icon: icons.room }
+                { lat: 0.35428, lng: 32.62534, title: 'Mesh Near Boardroom', description: 'Mesh point near the boardroom.', icon: icons.mesh },
+                { lat: 0.35392, lng: 32.62565, title: 'Dining', description: 'Dining area at Kyambogo.', icon: icons.dining },
+                { lat: 0.35365, lng: 32.62551, title: 'Parking', description: 'Parking area.', icon: icons.parking },
+                { lat: 0.35349, lng: 32.62565, title: 'KYU-Visual Hi-Tech Resource Room', description: 'Visual Hi-Tech Resource Room.', icon: icons.room },
+                { lat: 0.35414, lng: 32.6255, title: 'Board Room', description: 'Main boardroom for meetings.', icon: icons.room },
+                { lat: 0.35401, lng: 32.62533, title: 'Room 11', description: 'Room 11.', icon: icons.room },
+                { lat: 0.35429, lng: 32.62529, title: 'Room 15', description: 'Room 15.', icon: icons.room },
+                { lat: 0.355, lng: 32.62502, title: 'Near Room F (Mesh)', description: 'Mesh point near Room F.', icon: icons.mesh },
+                { lat: 0.35476, lng: 32.6254, title: 'Behind Room 28', description: 'Area behind Room 28.', icon: icons.room },
+                { lat: 0.35412, lng: 32.6254, title: 'Room 8', description: 'Room 8.', icon: icons.room }
             ];
 
-            // Add markers with custom icons and labels
+            // Add markers with custom icons and info windows (no labels)
             locations.forEach(location => {
                 const marker = new google.maps.Marker({
                     position: { lat: location.lat, lng: location.lng },
                     map: map,
                     title: location.title,
-                    icon: location.icon,
-                    label: {
-                        text: location.title, // Display the location name as a label
-                        color: "#000000", // Black text color
-                        fontSize: "12px", // Font size
-                        fontWeight: "bold" // Bold text
-                    }
+                    icon: location.icon
+                });
+
+                const infoWindow = new google.maps.InfoWindow({
+                    content: `<strong>${location.title}</strong><br>${location.description}`
+                });
+
+                marker.addListener('click', () => {
+                    infoWindow.open(map, marker);
                 });
             });
         }
