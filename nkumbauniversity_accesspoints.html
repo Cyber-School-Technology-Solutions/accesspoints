@@ -39,13 +39,40 @@
             margin: 5px;
             padding: 5px;
         }
+        #key {
+            margin: 20px auto;
+            padding: 10px;
+            background-color: #f9f9f9;
+            border: 1px solid #ddd;
+            width: 80%;
+            text-align: left;
+        }
+        #key img {
+            width: 20px;
+            height: 20px;
+            vertical-align: middle;
+            margin-right: 10px;
+        }
+        #key table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+        }
+        #key th, #key td {
+            padding: 8px;
+            border: 1px solid #ddd;
+            text-align: left;
+        }
+        #key th {
+            background-color: #f2f2f2;
+        }
     </style>
     <!-- Google Maps API -->
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD-7kcuQYGdqeFkjWcLwZOiuOfg1TgTX8M&callback=initMap" async defer></script>
 </head>
 <body>
-    <h1>Uganda E-Learning Initiative for Education Institutions - Nkumba University- Access Points</h1>
-    <p>This interactive map provides a visual representation of key access points for the Uganda E-Learning Initiative in Nkumba Unversity University of Science and Technology. Each icon on the map represents a location where educational infrastructure is being integrated to support digital learning. These locations play a vital role in enhancing access to educational resources and improving learning outcomes for students and staff in Uganda.</p>
+    <h1>Uganda E-Learning Initiative for Education Institutions - Nkumba University - Access Points</h1>
+    <p>This interactive map provides a visual representation of key access points for the Uganda E-Learning Initiative in Nkumba University. Each icon on the map represents a location where educational infrastructure is being integrated to support digital learning. These locations play a vital role in enhancing access to educational resources and improving learning outcomes for students and staff in Uganda.</p>
 
     <div id="route-panel">
         <label for="start">Start:</label>
@@ -78,6 +105,78 @@
     </div>
 
     <div id="map"></div>
+
+    <div id="key">
+        <h2>Map Key</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Icon</th>
+                    <th>Location</th>
+                    <th>Type of Access Point</th>
+                    <th>Description</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Reading Room -->
+                <tr>
+                    <td><img src="https://cdn-icons-png.flaticon.com/512/167/167756.png" alt="Reading Room Icon"></td>
+                    <td>Reading Room</td>
+                    <td>Indoor Access Point</td>
+                    <td>Reading room at Nkumba University.</td>
+                </tr>
+                <!-- SBA Dean’s Office -->
+                <tr>
+                    <td><img src="https://cdn-icons-png.flaticon.com/512/3036/3036570.png" alt="Office Icon"></td>
+                    <td>SBA Dean’s Office</td>
+                    <td>Access Point</td>
+                    <td>Office of the Dean of the School of Business Administration.</td>
+                </tr>
+                <!-- Library First Floor -->
+                <tr>
+                    <td><img src="https://cdn-icons-png.flaticon.com/512/619/619032.png" alt="Library Icon"></td>
+                    <td>Library First Floor</td>
+                    <td>Indoor Access Point</td>
+                    <td>First floor of the library.</td>
+                </tr>
+                <!-- Guild Cafe Mesh Node -->
+                <tr>
+                    <td><img src="https://cdn-icons-png.flaticon.com/512/619/619032.png" alt="Mesh Icon"></td>
+                    <td>Guild Cafe Mesh Node</td>
+                    <td>Mesh Node</td>
+                    <td>Mesh node near the Guild Cafe.</td>
+                </tr>
+                <!-- Forest Area Mesh Node 2 -->
+                <tr>
+                    <td><img src="https://cdn-icons-png.flaticon.com/512/619/619032.png" alt="Mesh Icon"></td>
+                    <td>Forest Area Mesh Node 2</td>
+                    <td>Mesh Node</td>
+                    <td>Mesh node in the forest area.</td>
+                </tr>
+                <!-- Admissions Office -->
+                <tr>
+                    <td><img src="https://cdn-icons-png.flaticon.com/512/3036/3036570.png" alt="Office Icon"></td>
+                    <td>Admissions Office</td>
+                    <td>Access Point</td>
+                    <td>Admissions office at Nkumba University.</td>
+                </tr>
+                <!-- School of SCIAD -->
+                <tr>
+                    <td><img src="https://cdn-icons-png.flaticon.com/512/3036/3036570.png" alt="Office Icon"></td>
+                    <td>School of SCIAD, near the sewing area and near the Sciad gate</td>
+                    <td>Access Point</td>
+                    <td>Location near the School of SCIAD.</td>
+                </tr>
+                <!-- Outside Mpanga Library -->
+                <tr>
+                    <td><img src="https://cdn-icons-png.flaticon.com/512/619/619032.png" alt="Library Icon"></td>
+                    <td>Outside Mpanga Library</td>
+                    <td>Indoor Access Point</td>
+                    <td>Area outside the Mpanga Library.</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
 
     <script>
         let map;
@@ -128,7 +227,7 @@
                 { lat: 0.111090, lng: 32.513518, title: 'Outside Mpanga Library', description: 'Area outside the Mpanga Library.', icon: icons.library }
             ];
 
-            // Add markers with custom icons and info windows
+            // Add markers with custom icons and info windows (no labels)
             locations.forEach(location => {
                 const marker = new google.maps.Marker({
                     position: { lat: location.lat, lng: location.lng },
