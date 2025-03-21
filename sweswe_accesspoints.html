@@ -39,12 +39,39 @@
             margin: 5px;
             padding: 5px;
         }
+        #key {
+            margin: 20px auto;
+            padding: 10px;
+            background-color: #f9f9f9;
+            border: 1px solid #ddd;
+            width: 80%;
+            text-align: left;
+        }
+        #key img {
+            width: 20px;
+            height: 20px;
+            vertical-align: middle;
+            margin-right: 10px;
+        }
+        #key table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+        }
+        #key th, #key td {
+            padding: 8px;
+            border: 1px solid #ddd;
+            text-align: left;
+        }
+        #key th {
+            background-color: #f2f2f2;
+        }
     </style>
     <!-- Google Maps API -->
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD-7kcuQYGdqeFkjWcLwZOiuOfg1TgTX8M&callback=initMap" async defer></script>
 </head>
 <body>
-    <h1>Uganda E-Learning Initiative for Education Institutions - Sweswe- Access Points</h1>
+    <h1>Uganda E-Learning Initiative for Education Institutions - Sweswe - Access Points</h1>
     <p>This interactive map provides a visual representation of key access points for the Uganda E-Learning Initiative in Sweswe. Each icon on the map represents a location where educational infrastructure is being integrated to support digital learning. These locations play a vital role in enhancing access to educational resources and improving learning outcomes for students and staff in Uganda.</p>
 
     <div id="route-panel">
@@ -60,7 +87,7 @@
         <label for="end">End:</label>
         <select id="end">
             <option value="">Select a destination</option>
-              <option value="-0.366137,31.101526">Mesh node 1</option>
+            <option value="-0.366137,31.101526">Mesh node 1</option>
             <option value="-0.366742,31.102117">Mesh node 2</option>
             <option value="-0.366559,31.102214">Computer lab 1 Access Point</option>
             <option value="-0.366548,31.10224">Computer lab 2 Access Point</option>
@@ -71,6 +98,50 @@
 
     <div id="map"></div>
 
+    <div id="key">
+        <h2>Map Key</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Icon</th>
+                    <th>Location</th>
+                    <th>Type of Access Point</th>
+                    <th>Description</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Mesh Node 1 -->
+                <tr>
+                    <td><img src="https://cdn-icons-png.flaticon.com/512/619/619032.png" alt="Mesh Node Icon"></td>
+                    <td>Mesh Node 1</td>
+                    <td>Mesh Node</td>
+                    <td>Mesh node at Sweswe.</td>
+                </tr>
+                <!-- Mesh Node 2 -->
+                <tr>
+                    <td><img src="https://cdn-icons-png.flaticon.com/512/619/619032.png" alt="Mesh Node Icon"></td>
+                    <td>Mesh Node 2</td>
+                    <td>Mesh Node</td>
+                    <td>Mesh node at Sweswe.</td>
+                </tr>
+                <!-- Computer Lab 1 Access Point -->
+                <tr>
+                    <td><img src="https://cdn-icons-png.flaticon.com/512/167/167756.png" alt="Computer Lab Icon"></td>
+                    <td>Computer Lab 1 Access Point</td>
+                    <td>Indoor Access Point</td>
+                    <td>Access point in Computer Lab 1.</td>
+                </tr>
+                <!-- Computer Lab 2 Access Point -->
+                <tr>
+                    <td><img src="https://cdn-icons-png.flaticon.com/512/167/167756.png" alt="Computer Lab Icon"></td>
+                    <td>Computer Lab 2 Access Point</td>
+                    <td>Indoor Access Point</td>
+                    <td>Access point in Computer Lab 2.</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
     <script>
         let map;
         let directionsService;
@@ -79,8 +150,8 @@
         function initMap() {
             // Initialize the map centered at Sweswe
             map = new google.maps.Map(document.getElementById('map'), {
-                center: { lat: -0.61754, lng: 30.656 }, // Centered at Library Block
-                zoom: 16
+                center: { lat: -0.366137, lng: 31.101526 }, // Centered at Mesh Node 1
+                zoom: 18
             });
 
             // Initialize Directions Service and Renderer
@@ -90,26 +161,22 @@
 
             // Define custom icons
             const icons = {
-                library: {
-                    url: "https://cdn-icons-png.flaticon.com/512/167/167756.png", // Library icon
-                    scaledSize: new google.maps.Size(40, 40)
-                },
-                hostel: {
-                    url: "https://cdn-icons-png.flaticon.com/512/3036/3036570.png", // Hostel icon
-                    scaledSize: new google.maps.Size(40, 40)
-                },
                 mesh: {
                     url: "https://cdn-icons-png.flaticon.com/512/619/619032.png", // Mesh node icon
+                    scaledSize: new google.maps.Size(40, 40)
+                },
+                computerLab: {
+                    url: "https://cdn-icons-png.flaticon.com/512/167/167756.png", // Computer lab icon
                     scaledSize: new google.maps.Size(40, 40)
                 }
             };
 
             // Define the locations
             const locations = [
-                { lat: -0.61754, lng: 30.656, title: 'Library Block', description: 'Main library block at Sweswe.', icon: icons.library },
-                { lat: -0.61757, lng: 30.65675, title: 'MLS Girls\' Hostel', description: 'Hostel for MLS girls.', icon: icons.hostel },
-                { lat: -0.59655, lng: 30.59909, title: 'Kihumuro Campus Mesh Node', description: 'Mesh node at Kihumuro Campus.', icon: icons.mesh },
-                { lat: -0.61649, lng: 30.65599, title: 'Science Block Unifi AC Mesh Pro', description: 'Unifi AC Mesh Pro at the Science Block.', icon: icons.mesh }
+                { lat: -0.366137, lng: 31.101526, title: 'Mesh Node 1', description: 'Mesh node at Sweswe.', icon: icons.mesh },
+                { lat: -0.366742, lng: 31.102117, title: 'Mesh Node 2', description: 'Mesh node at Sweswe.', icon: icons.mesh },
+                { lat: -0.366559, lng: 31.102214, title: 'Computer Lab 1 Access Point', description: 'Access point in Computer Lab 1.', icon: icons.computerLab },
+                { lat: -0.366548, lng: 31.10224, title: 'Computer Lab 2 Access Point', description: 'Access point in Computer Lab 2.', icon: icons.computerLab }
             ];
 
             // Add markers with custom icons and info windows
