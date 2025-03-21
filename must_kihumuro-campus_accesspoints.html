@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mbarara University of Science and Technology, Kihumuro Campus - Interactive Map</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+        }
+        #map {
+            height: 600px;
+            width: 100%;
+        }
+        h1 {
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+        p {
+            font-size: 18px;
+            margin: 20px auto;
+            width: 80%;
+        }
+        #route-panel {
+            margin: 20px auto;
+            padding: 10px;
+            background-color: #f9f9f9;
+            border: 1px solid #ddd;
+            width: 80%;
+            text-align: left;
+        }
+        #route-panel label {
+            font-weight: bold;
+        }
+        #route-panel select, #route-panel button {
+            margin: 5px;
+            padding: 5px;
+        }
+        #key {
+            margin: 20px auto;
+            padding: 10px;
+            background-color: #f9f9f9;
+            border: 1px solid #ddd;
+            width: 80%;
+            text-align: left;
+        }
+        #key img {
+            width: 20px;
+            height: 20px;
+            vertical-align: middle;
+            margin-right: 10px;
+        }
+        #key table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+        }
+        #key th, #key td {
+            padding: 8px;
+            border: 1px solid #ddd;
+            text-align: left;
+        }
+        #key th {
+            background-color: #f2f2f2;
+        }
+        marquee {
+            background-color: #007BFF;
+            color: white;
+            padding: 5px;
+            font-size: 14px;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+    </style>
+    <!-- Google Maps API -->
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD-7kcuQYGdqeFkjWcLwZOiuOfg1TgTX8M&callback=initMap" async defer></script>
+</head>
+<body>
+    <h1>Uganda E-Learning Initiative for Education Institutions - Mbarara University of Science and Technology, Kihumuro Campus - Access Points</h1>
+    <p>This interactive map provides a visual representation of key access points for the Uganda E-Learning Initiative at Mbarara University of Science and Technology, Kihumuro Campus. Each icon on the map represents a location where educational infrastructure is being integrated to support digital learning. These locations play a vital role in enhancing access to educational resources and improving learning outcomes for students and staff in Uganda.</p>
+
+    <div id="route-panel">
+        <label for="start">Start:</label>
+        <select id="start">
+            <option value="">Select a starting point</option>
+            <option value="-0.596826,30.599007">Indoor Access Point</option>
+            <option value="-0.596574,30.599016">Outdoor Access Point</option>
+        </select>
+
+        <label for="end">End:</label>
+        <select id="end">
+            <option value="">Select a destination</option>
+            <option value="-0.596826,30.599007">Indoor Access Point</option>
+            <option value="-0.596574,30.599016">Outdoor Access Point</option>
+        </select>
+
+        <button onclick="calculateRoute()">Get Route</button>
+    </div>
+
+    <div id="map"></div>
+
+    <!-- Map Key -->
+    <div id="key">
+        <h2>Map Key</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Icon</th>
+                    <th>Location</th>
+                    <th>Type of Access Point</th>
+                    <th>Description</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Indoor Access Point -->
+                <tr>
+                    <td><img src="https://cdn-icons-png.flaticon.com/512/167/167756.png" alt="Indoor Access Point Icon"></td>
+                    <td>Indoor Access Point</td>
+                    <td>Indoor</td>
+                    <td>Access point located inside a building.</td>
+                </tr>
+                <!-- Outdoor Access Point -->
+                <tr>
+                    <td><img src="https://cdn-icons-png.flaticon.com/512/619/619032.png" alt="Outdoor Access Point Icon"></td>
+                    <td>Outdoor Access Point</td>
+                    <td>Outdoor</td>
+                    <td>Access point located in an open area.</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Marquee at the bottom -->
+    <marquee>
+        Copyright © 2025 Cyber School Technology Solutions | Powered by Cyber School Technology Solutions in partnership with MasterCard Foundation Uganda
+    </marquee>
+
+    <script>
+        let map;
+        let directionsService;
+        let directionsRenderer;
+
+        function initMap() {
+            // Initialize the map centered at Kihumuro Campus
+            map = new google.maps.Map(document.getElementById('map'), {
+                center: { lat: -0.596826, lng: 30.599007 }, // Centered at Indoor Access Point
+                zoom: 18
+            });
+
+            // Initialize Directions Service and Renderer
+            directionsService = new google.maps.DirectionsService();
+            directionsRenderer = new google.maps.DirectionsRenderer();
+            directionsRenderer.setMap(map);
+
+            // Define custom icons
+            const icons = {
+                indoor: {
+                    url: "https://cdn-icons-png.flaticon.com/512/167/167756.png", // Indoor icon
+                    scaledSize: new google.maps.Size(40, 40)
+                },
+                outdoor: {
+                    url: "https://cdn-icons-png.flaticon.com/512/619/619032.png", // Outdoor icon
+                    scaledSize: new google.maps.Size(40, 40)
+                }
+            };
+
+            // Define the locations
+            const locations = [
+                { lat: -0.596826, lng: 30.599007, title: 'Indoor Access Point', description: 'Access point located inside a building.', icon: icons.indoor },
+                { lat: -0.596574, lng: 30.599016, title: 'Outdoor Access Point', description: 'Access point located in an open area.', icon: icons.outdoor }
+            ];
+
+            // Add markers with custom icons and info windows
+            locations.forEach(location => {
+                const marker = new google.maps.Marker({
+                    position: { lat: location.lat, lng: location.lng },
+                    map: map,
+                    title: location.title,
+                    icon: location.icon
+                });
+
+                const infoWindow = new google.maps.InfoWindow({
+                    content: `<strong>${location.title}</strong><br>${location.description}`
+                });
+
+                marker.addListener('click', () => {
+                    infoWindow.open(map, marker);
+                });
+            });
+        }
+
+        // Function to calculate and display the route
+        function calculateRoute() {
+            const start = document.getElementById('start').value;
+            const end = document.getElementById('end').value;
+
+            if (!start || !end) {
+                alert("Please select both a starting point and a destination.");
+                return;
+            }
+
+            const startCoords = start.split(',');
+            const endCoords = end.split(',');
+
+            const request = {
+                origin: { lat: parseFloat(startCoords[0]), lng: parseFloat(startCoords[1]) },
+                destination: { lat: parseFloat(endCoords[0]), lng: parseFloat(endCoords[1]) },
+                travelMode: 'WALKING' // You can change this to DRIVING, BICYCLING, etc.
+            };
+
+            directionsService.route(request, (result, status) => {
+                if (status === 'OK') {
+                    directionsRenderer.setDirections(result);
+                } else {
+                    alert("Could not calculate route. Please try again.");
+                }
+            });
+        }
+    </script>
+</body>
+</html>
