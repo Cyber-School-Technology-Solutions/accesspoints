@@ -39,13 +39,40 @@
             margin: 5px;
             padding: 5px;
         }
+        #key {
+            margin: 20px auto;
+            padding: 10px;
+            background-color: #f9f9f9;
+            border: 1px solid #ddd;
+            width: 80%;
+            text-align: left;
+        }
+        #key img {
+            width: 20px;
+            height: 20px;
+            vertical-align: middle;
+            margin-right: 10px;
+        }
+        #key table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+        }
+        #key th, #key td {
+            padding: 8px;
+            border: 1px solid #ddd;
+            text-align: left;
+        }
+        #key th {
+            background-color: #f2f2f2;
+        }
     </style>
     <!-- Google Maps API -->
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD-7kcuQYGdqeFkjWcLwZOiuOfg1TgTX8M&callback=initMap" async defer></script>
 </head>
 <body>
     <h1>Uganda E-Learning Initiative for Education Institutions - Mbarara University of Science and Technology - Access Points</h1>
-    <p>This interactive map provides a visual representation of key access points for the Uganda E-Learning Initiative in Mbarara University of Science and Technology. Each icon on the map represents a location where educational infrastructure is being integrated to support digital learning. These locations play a vital role in enhancing access to educational resources and improving learning outcomes for students and staff in Uganda..</p>
+    <p>This interactive map provides a visual representation of key access points for the Uganda E-Learning Initiative in Mbarara University of Science and Technology. Each icon on the map represents a location where educational infrastructure is being integrated to support digital learning. These locations play a vital role in enhancing access to educational resources and improving learning outcomes for students and staff in Uganda.</p>
 
     <div id="route-panel">
         <label for="start">Start:</label>
@@ -54,13 +81,13 @@
             <option value="-0.61754,30.656">Library Block</option>
             <option value="-0.61757,30.65675">MLS Girls' Hostel</option>
             <option value="-0.61649,30.65599">Science Block Unifi AC Mesh Pro</option>
-            <option value="-0.616623, 30.657194">Lecture Room Postgraduate Room 1 & 2</option>
-            <option value="-0.616977, 30.657072">Mesh node infront of the administration Block</option>
-            <option value="-0.616851, 30.656698">AP at UCOBs Project Building</option>
-            <option value="-0.617532, 30.656721">Mesh Node infront MLS</option>
-            <option value="-0.617450, 30.656080">Mesh Node infront of the Library</option>
-            <option value="-0.617553, 30.656191">Mesh Node Inside the library</option>
-             <option value="-0.616360, 30.656014">Science Block</option>
+            <option value="-0.616623,30.657194">Lecture Room Postgraduate Room 1 & 2</option>
+            <option value="-0.616977,30.657072">Mesh node infront of the administration Block</option>
+            <option value="-0.616851,30.656698">AP at UCOBs Project Building</option>
+            <option value="-0.617532,30.656721">Mesh Node infront MLS</option>
+            <option value="-0.617450,30.656080">Mesh Node infront of the Library</option>
+            <option value="-0.617553,30.656191">Mesh Node Inside the library</option>
+            <option value="-0.616360,30.656014">Science Block</option>
         </select>
 
         <label for="end">End:</label>
@@ -69,19 +96,92 @@
             <option value="-0.61754,30.656">Library Block</option>
             <option value="-0.61757,30.65675">MLS Girls' Hostel</option>
             <option value="-0.61649,30.65599">Science Block Unifi AC Mesh Pro</option>
-             <option value="-0.616623, 30.657194">Lecture Room Postgraduate Room 1 & 2</option>
-            <option value="-0.616977, 30.657072">Mesh node infront of the administration Block</option>
-            <option value="-0.616851, 30.656698">AP at UCOBs Project Building</option>
-            <option value="-0.617532, 30.656721">Mesh Node infront MLS</option>
-            <option value="-0.617450, 30.656080">Mesh Node infront of the Library</option>
-            <option value="-0.617553, 30.656191">Mesh Node Inside the library</option>
-             <option value="-0.616360, 30.656014">Science Block</option>
+            <option value="-0.616623,30.657194">Lecture Room Postgraduate Room 1 & 2</option>
+            <option value="-0.616977,30.657072">Mesh node infront of the administration Block</option>
+            <option value="-0.616851,30.656698">AP at UCOBs Project Building</option>
+            <option value="-0.617532,30.656721">Mesh Node infront MLS</option>
+            <option value="-0.617450,30.656080">Mesh Node infront of the Library</option>
+            <option value="-0.617553,30.656191">Mesh Node Inside the library</option>
+            <option value="-0.616360,30.656014">Science Block</option>
         </select>
 
         <button onclick="calculateRoute()">Get Route</button>
     </div>
 
     <div id="map"></div>
+
+    <div id="key">
+        <h2>Map Key</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Icon</th>
+                    <th>Location</th>
+                    <th>Type of Access Point</th>
+                    <th>Description</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Library Block -->
+                <tr>
+                    <td><img src="https://cdn-icons-png.flaticon.com/512/167/167756.png" alt="Library Icon"></td>
+                    <td>Library Block</td>
+                    <td>Indoor Access Point</td>
+                    <td>Main library block at Mbarara University.</td>
+                </tr>
+                <!-- Hostel -->
+                <tr>
+                    <td><img src="https://cdn-icons-png.flaticon.com/512/3036/3036570.png" alt="Hostel Icon"></td>
+                    <td>MLS Girls' Hostel</td>
+                    <td>Hostel</td>
+                    <td>Hostel for MLS girls.</td>
+                </tr>
+                <!-- Mesh Nodes -->
+                <tr>
+                    <td><img src="https://cdn-icons-png.flaticon.com/512/619/619032.png" alt="Mesh Icon"></td>
+                    <td>Science Block Unifi AC Mesh Pro</td>
+                    <td>Mesh Node</td>
+                    <td>Unifi AC Mesh Pro at the Science Block.</td>
+                </tr>
+                <tr>
+                    <td><img src="https://cdn-icons-png.flaticon.com/512/619/619032.png" alt="Mesh Icon"></td>
+                    <td>Mesh node infront of the administration Block</td>
+                    <td>Mesh Node</td>
+                    <td>Mesh node infront of the administration Block.</td>
+                </tr>
+                <tr>
+                    <td><img src="https://cdn-icons-png.flaticon.com/512/619/619032.png" alt="Mesh Icon"></td>
+                    <td>AP at UCOBs Project Building</td>
+                    <td>Mesh Node</td>
+                    <td>AP at UCOBs Project Building.</td>
+                </tr>
+                <tr>
+                    <td><img src="https://cdn-icons-png.flaticon.com/512/619/619032.png" alt="Mesh Icon"></td>
+                    <td>Mesh Node infront MLS</td>
+                    <td>Mesh Node</td>
+                    <td>Mesh Node infront MLS.</td>
+                </tr>
+                <tr>
+                    <td><img src="https://cdn-icons-png.flaticon.com/512/619/619032.png" alt="Mesh Icon"></td>
+                    <td>Mesh Node infront of the Library</td>
+                    <td>Mesh Node</td>
+                    <td>Mesh Node infront of the Library.</td>
+                </tr>
+                <tr>
+                    <td><img src="https://cdn-icons-png.flaticon.com/512/619/619032.png" alt="Mesh Icon"></td>
+                    <td>Mesh Node Inside the library</td>
+                    <td>Mesh Node</td>
+                    <td>Mesh Node Inside the library.</td>
+                </tr>
+                <tr>
+                    <td><img src="https://cdn-icons-png.flaticon.com/512/619/619032.png" alt="Mesh Icon"></td>
+                    <td>Science Block</td>
+                    <td>Mesh Node</td>
+                    <td>Mesh Node at the Science Block.</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
 
     <script>
         let map;
@@ -119,17 +219,17 @@
             // Define the locations
             const locations = [
                 { lat: -0.61754, lng: 30.656, title: 'Library Block', description: 'Main library block at Mbarara University.', icon: icons.library },
-                { lat: -0.61757, lng: 30.65675, title: 'MLS Girls\' Hostel', description: 'Hostel for MLS girls.', icon: icons.hostel }
-                { lat: -0.61649, lng: 30.65599, title: 'Science Block Unifi AC Mesh Pro', description: 'Unifi AC Mesh Pro at the Science Block.', icon: icons.mesh }
-                { lat: -0.616977, lng: 30.657072, title: 'Mesh node infront of the administration Block', description: 'Mesh node infront of the administration Block.', icon: icons.mesh }
-                { lat: -0.616851, lng: 30.656698, title: 'AP at UCOBs Project Building', description: 'AP at UCOBs Project Building.', icon: icons.mesh }
-                { lat: -0.617532, lng: 30.656721, title: 'Mesh Node infront MLS', description: 'Mesh Node infront MLS.', icon: icons.mesh }
-                { lat: -0.617450, lng: 30.656080, title: 'Mesh Node infront of the Library, description: 'Mesh Node infront of the Library.', icon: icons.mesh }
-                { lat: -0.617553, lng: 30.656191, title: 'Mesh Node Inside the library, description: 'Mesh Node Inside the library.', icon: icons.mesh }
-                { lat: -0.616360, lng: 30.656014, title: 'Mesh Node Inside the library, description: 'Mesh Node Inside the library.', icon: icons.mesh }
+                { lat: -0.61757, lng: 30.65675, title: 'MLS Girls\' Hostel', description: 'Hostel for MLS girls.', icon: icons.hostel },
+                { lat: -0.61649, lng: 30.65599, title: 'Science Block Unifi AC Mesh Pro', description: 'Unifi AC Mesh Pro at the Science Block.', icon: icons.mesh },
+                { lat: -0.616977, lng: 30.657072, title: 'Mesh node infront of the administration Block', description: 'Mesh node infront of the administration Block.', icon: icons.mesh },
+                { lat: -0.616851, lng: 30.656698, title: 'AP at UCOBs Project Building', description: 'AP at UCOBs Project Building.', icon: icons.mesh },
+                { lat: -0.617532, lng: 30.656721, title: 'Mesh Node infront MLS', description: 'Mesh Node infront MLS.', icon: icons.mesh },
+                { lat: -0.617450, lng: 30.656080, title: 'Mesh Node infront of the Library', description: 'Mesh Node infront of the Library.', icon: icons.mesh },
+                { lat: -0.617553, lng: 30.656191, title: 'Mesh Node Inside the library', description: 'Mesh Node Inside the library.', icon: icons.mesh },
+                { lat: -0.616360, lng: 30.656014, title: 'Science Block', description: 'Mesh Node at the Science Block.', icon: icons.mesh }
             ];
 
-            // Add markers with custom icons and info windows
+            // Add markers with custom icons and info windows (no labels)
             locations.forEach(location => {
                 const marker = new google.maps.Marker({
                     position: { lat: location.lat, lng: location.lng },
