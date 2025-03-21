@@ -39,13 +39,40 @@
             margin: 5px;
             padding: 5px;
         }
+        #key {
+            margin: 20px auto;
+            padding: 10px;
+            background-color: #f9f9f9;
+            border: 1px solid #ddd;
+            width: 80%;
+            text-align: left;
+        }
+        #key img {
+            width: 20px;
+            height: 20px;
+            vertical-align: middle;
+            margin-right: 10px;
+        }
+        #key table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+        }
+        #key th, #key td {
+            padding: 8px;
+            border: 1px solid #ddd;
+            text-align: left;
+        }
+        #key th {
+            background-color: #f2f2f2;
+        }
     </style>
     <!-- Google Maps API -->
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD-7kcuQYGdqeFkjWcLwZOiuOfg1TgTX8M&callback=initMap" async defer></script>
 </head>
 <body>
-    <h1>Uganda E-Learning Initiative for Education Institutions - Kyambogo University - Access Points- Interactive Map</h1>
-    <p>This interactive map provides a visual representation of key access points for the Uganda E-Learning Initiative in kyambogo University. Each icon on the map represents a location where educational infrastructure is being integrated to support digital learning. These locations play a vital role in enhancing access to educational resources and improving learning outcomes for students and staff in Uganda</p>
+    <h1>Uganda E-Learning Initiative for Education Institutions - Kyambogo University - Access Points - Interactive Map</h1>
+    <p>This interactive map provides a visual representation of key access points for the Uganda E-Learning Initiative in Kyambogo University. Each icon on the map represents a location where educational infrastructure is being integrated to support digital learning. These locations play a vital role in enhancing access to educational resources and improving learning outcomes for students and staff in Uganda.</p>
 
     <div id="route-panel">
         <label for="start">Start:</label>
@@ -82,6 +109,86 @@
     </div>
 
     <div id="map"></div>
+
+    <div id="key">
+        <h2>Map Key</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Icon</th>
+                    <th>Location</th>
+                    <th>Type of Access Point</th>
+                    <th>Description</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Mesh Points -->
+                <tr>
+                    <td><img src="https://cdn-icons-png.flaticon.com/512/619/619032.png" alt="Mesh Icon"></td>
+                    <td>Mesh Near Boardroom</td>
+                    <td>Mesh Node</td>
+                    <td>Mesh point near the boardroom.</td>
+                </tr>
+                <tr>
+                    <td><img src="https://cdn-icons-png.flaticon.com/512/619/619032.png" alt="Mesh Icon"></td>
+                    <td>Near Room F (Mesh)</td>
+                    <td>Mesh Node</td>
+                    <td>Mesh point near Room F.</td>
+                </tr>
+                <!-- Dining -->
+                <tr>
+                    <td><img src="https://cdn-icons-png.flaticon.com/512/3036/3036570.png" alt="Dining Icon"></td>
+                    <td>Dining</td>
+                    <td>Dining Area</td>
+                    <td>Dining area at Kyambogo.</td>
+                </tr>
+                <!-- Parking -->
+                <tr>
+                    <td><img src="https://cdn-icons-png.flaticon.com/512/167/167756.png" alt="Parking Icon"></td>
+                    <td>Parking</td>
+                    <td>Parking Area</td>
+                    <td>Parking area.</td>
+                </tr>
+                <!-- Rooms -->
+                <tr>
+                    <td><img src="https://cdn-icons-png.flaticon.com/512/619/619032.png" alt="Room Icon"></td>
+                    <td>KYU-Visual Hi-Tech Resource Room</td>
+                    <td>Room</td>
+                    <td>Visual Hi-Tech Resource Room.</td>
+                </tr>
+                <tr>
+                    <td><img src="https://cdn-icons-png.flaticon.com/512/619/619032.png" alt="Room Icon"></td>
+                    <td>Board Room</td>
+                    <td>Room</td>
+                    <td>Main boardroom for meetings.</td>
+                </tr>
+                <tr>
+                    <td><img src="https://cdn-icons-png.flaticon.com/512/619/619032.png" alt="Room Icon"></td>
+                    <td>Room 11</td>
+                    <td>Room</td>
+                    <td>Room 11.</td>
+                </tr>
+                <tr>
+                    <td><img src="https://cdn-icons-png.flaticon.com/512/619/619032.png" alt="Room Icon"></td>
+                    <td>Room 15</td>
+                    <td>Room</td>
+                    <td>Room 15.</td>
+                </tr>
+                <tr>
+                    <td><img src="https://cdn-icons-png.flaticon.com/512/619/619032.png" alt="Room Icon"></td>
+                    <td>Behind Room 28</td>
+                    <td>Room</td>
+                    <td>Area behind Room 28.</td>
+                </tr>
+                <tr>
+                    <td><img src="https://cdn-icons-png.flaticon.com/512/619/619032.png" alt="Room Icon"></td>
+                    <td>Room 8</td>
+                    <td>Room</td>
+                    <td>Room 8.</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
 
     <script>
         let map;
